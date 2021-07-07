@@ -1,0 +1,91 @@
+{
+  "project_info": {
+    "project_number": "326692148381",
+    "firebase_url": "https://react-native-c99ff.firebaseio.com",
+    "project_id": "react-native-c99ff",
+    "storage_bucket": "react-native-c99ff.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326692148381:android:78e942f1204f88cefb7074",
+        "android_client_info": {
+          "package_name": "com.awesomeproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326692148381-7p7s55qm850vfmitok0idqsp6l2qmp25.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.awesomeproject",
+            "certificate_hash": "ce2d8739ecf42d051fe3f1b289b65f8b2589b08f"
+          }
+        },
+        {
+          "client_id": "326692148381-frosb9nil3pj26vjgfi2bldb18s530mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVOJwYjZd3ZekkjRczf8sgtirjy9PbsHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326692148381-frosb9nil3pj26vjgfi2bldb18s530mh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "326692148381-p99avpqsegoqfsglgdc16m5k8jquflge.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AwesomeProject"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:326692148381:android:7a1a1ba0f5efa8dffb7074",
+        "android_client_info": {
+          "package_name": "com.varid68.autofillotp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "326692148381-frosb9nil3pj26vjgfi2bldb18s530mh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVOJwYjZd3ZekkjRczf8sgtirjy9PbsHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "326692148381-frosb9nil3pj26vjgfi2bldb18s530mh.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "326692148381-p99avpqsegoqfsglgdc16m5k8jquflge.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.AwesomeProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
