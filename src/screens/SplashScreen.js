@@ -7,7 +7,7 @@ import { ITEMS_CENTER } from 'constants/Styles'
 
 const SplashScreen = ({ navigation }) => {
   useEffect(() => {
-    navigation.dispatch(StackActions.replace('Login'))
+    navigation.dispatch(StackActions.replace('OTP'))
   }, [])
 
   return (

@@ -1,85 +1,39 @@
 import React, { useState, useEffect, createContext } from 'react'
-import { showToast, addRemoveListenerBack } from 'services/common'
-import { getListData } from 'actions/axios'
+import { addRemoveListenerBack } from 'services/common'
+import auth from '@react-native-firebase/auth'
 
 export const LoginContext = createContext()
 
 function LoginContextProvider(props) {
-  const [items, setItems] = useState({
-    list: [], isLoadMore: true, offset: 0, count: 0, order: 'desc'
+  const [fields, setFields] = useState({
+    phone: '',
+    password: ''
   })
-  const [loading, setLoading] = useState({
-    initial: true,
-    refreshing: false
-  })
+  const [showPassword, setShowPassword] = useState(true)
 
-  useEffect(() => {
-
-  }, [])
 
   addRemoveListenerBack(props)
 
-  const _fetchLoadMore = (param = {}) => {
-    let clone = { ...items }
-    const params = {
-      ...param,
-      limit: 7,
-      offset: clone['offset'] + 7,
-      sortby: 'id_surat',
-      order: clone['order']
-    }
+  const _togglePassword = () => setShowPassword(!showPassword)
 
-    // DISABLE LOADING FOOTER END ITEM
-    if (clone['list'].length === clone['count']) {
-      setItems({ ...items, isLoadMore: false })
-      return false
-    }
+  const _onChange = (field, value) => setFields({ ...fields, [field]: value })
 
-    getListData('/surat')
-      .then(res => {
-        setItems({
-          ...items,
-          list: res.payload !== null ? clone['list'].concat(res.payload) : [],
-          offset: res.offset,
-          count: res.count,
-          isLoadMore: false
-        })
-    })
-    .catch(e => showToast(e.description))
+  const _navigate = async () => {
+    const confirmation = await auth().signInWithPhoneNumber(`+62${Number(fields.phone)}`)
+    console.log(confirmation)
   }
 
-  // 
-  const _fetchWithParam = (param = {}, loader) => {
-    const params = {
-      ...param,
-      limit: 7,
-      offset: 0,
-      sortby: 'id_surat',
-      orderby: param.order ? param.order : 'desc'
-    }
-
-    setLoading({ ...loading, [loader]: true })
-
-    getListData('/surat')
-      .then(res => {
-        setItems({
-          ...items,
-          list: res.payload !== null ? [].concat(res.payload) : [],
-          offset: 0,
-          count: res.count,
-          isLoadMore: true,
-          order: param.order ? param.order : 'asc'
-        })
-      setLoading({ ...loading, [loader]: false })
-    })
-    .catch(e => showToast(e.description))
-  }
+  const _clear = () => setFields({ phone: '', password: '' })
 
   return (
-    <LoginContext.Provider 
+    <LoginContext.Provider
       value={{
-        items,
-        loading
+        fields,
+        showPassword,
+        _togglePassword,
+        _onChange,
+        _navigate,
+        _clear
       }}>
       {props.children}
     </LoginContext.Provider>

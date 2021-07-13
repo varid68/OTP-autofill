@@ -35,3 +35,9 @@ export const ROW_CENTER = {
   justifyContent: 'center',
   alignItems: 'center'
 }
+
+export const COLUMN_BETWEEN_CENTER = {
+  flexDirection: 'column',
+  justifyContent: 'space-between',
+  alignItems: 'center'
+}
