@@ -1,6 +1,5 @@
-import React, { useState, useEffect, createContext } from 'react'
+import React, { useState, createContext, useEffect } from 'react'
 import { addRemoveListenerBack } from 'services/common'
-import auth from '@react-native-firebase/auth'
 
 export const LoginContext = createContext()
 
@@ -10,6 +9,11 @@ function LoginContextProvider(props) {
     password: ''
   })
   const [showPassword, setShowPassword] = useState(true)
+  const [isValid, setIsValid] = useState(false)
+
+  useEffect(() => {
+    fields.phone.length < 9 || fields.phone.length > 12 ? setIsValid(false) : setIsValid(true)
+  }, [fields.phone])
 
 
   addRemoveListenerBack(props)
@@ -18,10 +22,7 @@ function LoginContextProvider(props) {
 
   const _onChange = (field, value) => setFields({ ...fields, [field]: value })
 
-  const _navigate = async () => {
-    const confirmation = await auth().signInWithPhoneNumber(`+62${Number(fields.phone)}`)
-    console.log(confirmation)
-  }
+  const _navigate = async () => props.navigation.navigate('OTP', { phone: fields.phone })
 
   const _clear = () => setFields({ phone: '', password: '' })
 
@@ -30,6 +31,7 @@ function LoginContextProvider(props) {
       value={{
         fields,
         showPassword,
+        isValid,
         _togglePassword,
         _onChange,
         _navigate,

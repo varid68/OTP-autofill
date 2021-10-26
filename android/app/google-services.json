@@ -63,6 +63,14 @@
           "client_type": 1,
           "android_info": {
             "package_name": "com.varid68.autofillotp",
+            "certificate_hash": "0ec071fd4f9d9103ba67121870e95617d267b4cd"
+          }
+        },
+        {
+          "client_id": "326692148381-s4k81h0l79ulc5f0qu4is6tpq47gvif2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.varid68.autofillotp",
             "certificate_hash": "1985bc79aca5a7514deb437e217c533740ea8700"
           }
         },

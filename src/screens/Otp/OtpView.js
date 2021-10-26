@@ -1,8 +1,8 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext } from 'react'
 import { View, ScrollView, StatusBar, TouchableOpacity } from 'react-native'
 import Text from 'components/Text'
 import Icon from 'react-native-vector-icons/MaterialIcons'
-import { GHOST, GRAY, MERCURY, YELLOW } from 'constants/Colors'
+import { ARSENIC_2, BLACK, GHOST, GRAY, MERCURY, YELLOW } from 'constants/Colors'
 import { COLUMN_BETWEEN_CENTER } from 'constants/Styles'
 import styles from './OtpStyles'
 
@@ -16,7 +16,7 @@ const OtpView = ({ navigation }) => {
   const value = useContext(OtpContext)
 
   return (
-    <Fragment>
+    <>
       <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
         <StatusBar backgroundColor={GRAY} />
 
@@ -65,11 +65,11 @@ const OtpView = ({ navigation }) => {
 
         {value.flag == 'sms' ? <SMSAuth /> : <GoogleAuth />}
 
-        <View style={styles.btnSubmit}>
-          <Text size='small'>Submit</Text>
+        <View style={styles.btnSubmit(value.otp.length)}>
+          <Text size='small' color={value.otp.length == 6 ? BLACK : ARSENIC_2}>Submit</Text>
         </View>
       </ScrollView>
-    </Fragment>
+    </>
   )
 }
 

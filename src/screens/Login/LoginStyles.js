@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { GRAY, GRAY_25, GHOST, YELLOW } from 'constants/Colors'
+import { GRAY, GRAY_25, GHOST, YELLOW, ARSENIC } from 'constants/Colors'
 import { ROW_CENTER } from 'constants/Styles'
 
 
@@ -35,7 +35,7 @@ export default StyleSheet.create({
     fontSize: 16,
   },
 
-  btnSubmit: {
+  btnSubmit: (isValid) => ({
     ...ROW_CENTER,
     position: 'absolute',
     bottom: 20,
@@ -43,7 +43,7 @@ export default StyleSheet.create({
     width: 50,
     height: 50,
     borderRadius: 3,
-    backgroundColor: YELLOW,
+    backgroundColor:  isValid ? YELLOW : ARSENIC,
     padding: 10
-  }
+  })
 })

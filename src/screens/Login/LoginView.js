@@ -1,9 +1,9 @@
-import React, { useContext, Fragment } from 'react'
+import React, { useContext } from 'react'
 import { View, StatusBar, TextInput, Image, TouchableOpacity, ScrollView } from 'react-native'
 import Text from 'components/Text'
 import Icon from 'react-native-vector-icons/MaterialIcons'
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import { GHOST, GRAY, GRAY_50, GRAY_75, MERCURY, RED, YELLOW } from 'constants/Colors'
+import { ARSENIC_2, BLACK, GHOST, GRAY, GRAY_50, GRAY_75, MERCURY, RED, YELLOW } from 'constants/Colors'
 import { LIST_ITEM_BASE } from 'constants/Styles'
 import styles from './LoginStyles'
 
@@ -14,7 +14,7 @@ const LoginView = ({ navigation }) => {
   const value = useContext(LoginContext)
 
   return (
-    <Fragment>
+    <>
 
       <ScrollView style={styles.container} keyboardShouldPersistTaps="handled">
         <StatusBar backgroundColor={GRAY} />
@@ -62,9 +62,8 @@ const LoginView = ({ navigation }) => {
               style={[styles.field]} />
           </View>
           {
-            value.fields.phone.length < 9 || value.fields.phone.length > 12 ?
-              <Text color={RED} weight={400} size='xmini'>Please enter the correct mobile number.</Text>
-              : null
+            !value.isValid &&
+            <Text color={RED} weight={400} size='xmini'>Please enter the correct mobile number.</Text>
           }
         </View>
 
@@ -97,10 +96,10 @@ const LoginView = ({ navigation }) => {
 
       </ScrollView>
 
-      <TouchableOpacity style={styles.btnSubmit} onPress={value._navigate}>
-        <Ionicons name='arrow-forward' size={30} />
+      <TouchableOpacity style={styles.btnSubmit(value.isValid)} onPress={value.isValid ? value._navigate : null}>
+        <Ionicons name='arrow-forward' size={30} color={value.isValid ? BLACK : ARSENIC_2} />
       </TouchableOpacity>
-    </Fragment>
+    </>
   )
 }
 
